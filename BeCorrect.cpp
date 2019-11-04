@@ -1,3 +1,11 @@
+//***************************************************
+//*                                                 *
+//*                                                 *
+//*   BeCorrect v 1.1.0. Last update: Nov 4, 2019   *
+//*                                                 *
+//*                                                 *
+//***************************************************
+
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -17,9 +25,9 @@ int main(int argc, char* argv[])
     
     char chrnames[10000][100], rawcountline[10000], adjcountline[10000], rawbedgraphline[10000], adjbedgraphline[10000], chr[2][10000], oldchr[10000], start[2][100], end[2][100], counts[2][100],adjbedgraphname[10000], bedgraphfield[1000], bedgraphchr[10000], oldbedgraphchr[10000], oldcountchr[10000], countchrname[1000], bedgraphchrname[1000];
     
-    int intstart[2], intend[2], intcounts[2], pos=0, on=0, skipcols=0, colsskipped=0, oldintstart=0, oldintend=0, rawbedgraphloc=0, bedgraphspan=0, bedgraphchron=0,rawbedgraphstart=0,rawbedgraphend=0, countchron=0,oldbedgraphloc=0;
+    int intstart[2], intend[2], pos=0, on=0, skipcols=0, colsskipped=0, oldintstart=0, oldintend=0, rawbedgraphloc=0, bedgraphspan=0, bedgraphchron=0,rawbedgraphstart=0,rawbedgraphend=0, countchron=0,oldbedgraphloc=0;
     
-    double rawbedgraphvalue=0.0, oldscalevalue=1.0, scalevalue=1.0;
+    double rawbedgraphvalue=0.0, oldscalevalue=1.0, scalevalue=1.0, dblcounts[2];
     
     bool haschr=false;
     
@@ -102,7 +110,7 @@ int main(int argc, char* argv[])
         pos++;
         counts[1][on]='\0';
         on=0;
-        intcounts[1]=atoi(counts[1]);
+        dblcounts[1]=atof(counts[1]);
         
         //Get name for out file from first line of raw file.
         fgets(rawcountline,10000,rawcountfile);
@@ -173,7 +181,7 @@ int main(int argc, char* argv[])
         }
         pos++;
         counts[0][on]='\0';
-        intcounts[0]=atoi(counts[0]);
+        dblcounts[0]=atof(counts[0]);
         on=0;
         while(strcmp(chr[0],chr[1])!=0 || intstart[0]!=intstart[1] || intend[0]!=intend[1])
         {
@@ -223,14 +231,14 @@ int main(int argc, char* argv[])
             }
             pos++;
             counts[0][on]='\0';
-            intcounts[0]=atoi(counts[0]);
+            dblcounts[0]=atof(counts[0]);
             on=0;
         }
         //Set 'old' values for default values .
         oldintend=oldintstart=0;
         strcpy(oldchr,chr[0]);
         
-        scalevalue=1.0*(intcounts[1]+1.0)/(intcounts[0]+1.0);
+        scalevalue=1.0*(dblcounts[1]+1.0)/(dblcounts[0]+1.0);
         oldscalevalue=scalevalue;
         
         //Get the count chr on.
@@ -361,7 +369,7 @@ int main(int argc, char* argv[])
                 pos++;
                 counts[1][on]='\0';
                 on=0;
-                intcounts[1]=atoi(counts[1]);
+                dblcounts[1]=atof(counts[1]);
                 
                 fgets(rawcountline,10000,rawcountfile);
                 pos=on=0;
@@ -409,7 +417,7 @@ int main(int argc, char* argv[])
                 }
                 pos++;
                 counts[0][on]='\0';
-                intcounts[0]=atoi(counts[0]);
+                dblcounts[0]=atof(counts[0]);
                 on=0;
                 while((strcmp(chr[0],chr[1])!=0 || intstart[0]!=intstart[1] || intend[0]!=intend[1])  && !feof(rawcountfile))
                 {
@@ -459,10 +467,10 @@ int main(int argc, char* argv[])
                     }
                     pos++;
                     counts[0][on]='\0';
-                    intcounts[0]=atoi(counts[0]);
+                    dblcounts[0]=atof(counts[0]);
                     on=0;
                 }
-                scalevalue=1.0*(intcounts[1]+1.0)/(intcounts[0]+1.0);
+                scalevalue=1.0*(dblcounts[1]+1.0)/(dblcounts[0]+1.0);
             }
             
             //With the right region, adjust bedgraph value!
