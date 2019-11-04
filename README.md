@@ -1,11 +1,12 @@
 # BeCorrect
-BeCorrect (v.1.0.0) is distributed as a standalone .cpp file.  BeCorrect can be compiled in either linux or Mac OS X using the following command:
+*New in v1.1.0: BeCorrect now accepts decimal values for "counts" table to work with edgeR normalization, quartile normalization, etc.
+BeCorrect (v.1.1.0) is distributed as a standalone .cpp file.  BeCorrect can be compiled in either linux or Mac OS X using the following command:
 
 g++ BeCorrect.cpp -o BeCorrect
 
 Usage for BeCorrect can be displayed by running BeCorrect with no parameters supplied:
 
-BeCorrect (v1.0.0): A program to rescale bedgraph files to visually match batch correction using RUVSeq.
+BeCorrect (v1.1.0): A program to rescale bedgraph files to visually match batch correction using RUVSeq.
 
   Usage: BeCorrect <raw_counts> <ruv_adjusted_counts> <chr.names> 1.bg ... n.bg
 
