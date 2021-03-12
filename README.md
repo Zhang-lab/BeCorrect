@@ -17,7 +17,7 @@ chr	start	end	name1	...	nameN
 Name1	start1	end1	Val1.1	...	ValN.1
 Name2	start2	end2	Val1.2	...	ValN.2
 
-A full testing data set is available at http://regmedsrv1.wustl.edu/Public_SPACE/pgontarz/Public_html/SPACE/pgontarz/BeCorrect/BeCorrect_Test_Data.tar.gz.  To use this testing dataset, download and decompress using the command:
+A full testing data set is available at http://regmedsrv1.wustl.edu/Public_SPACE/pgontarz/Public_html/SPACE/pgontarz/BeCorrect/.  To use this testing dataset, download and decompress using the command:
 
 tar -xzvf BeCorrect_Test_Data.tar.gz
 
